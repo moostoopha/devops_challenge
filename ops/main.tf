@@ -28,16 +28,12 @@ resource "aws_launch_configuration" "nginx_server" {
   user_data = <<EOF
       #!/bin/bash
       sudo service docker start
-      sudo docker pull docker/nginx/nginx:latest
-      sudo docker network create -d bridge elstack
-      echo 'server.name: nginx' >> /tmp/nginx.yml
+      sudo docker pull nginx
       echo 'server.host: "0.0.0.0"' >> /tmp/nginx.yml
-      echo 'xpack.ml.enabled: false' >> /tmp/nginx.yml
       sudo docker run -p 80:8080 -d \
         --restart unless-stopped \
-        --name=nginx --network=elstack \
-        -v /tmp/nginx.yml:/usr/share/nginx/config/nginx.yml \
-        docker.nginx.co/nginx/nginx:7.7.0
+        -v /tmp/nginx.yml:/etc/nginx/nginx. conf \
+        nginx
 
 
 EOF
