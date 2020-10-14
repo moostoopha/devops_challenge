@@ -23,7 +23,6 @@ resource "aws_security_group" "nginx_web_interface" {
 resource "aws_launch_configuration" "nginx_server" {
   image_id = "${var.image_id}"
   instance_type = "${var.instance_type}"
-  iam_instance_profile = "${var.iam_instance_profile}"
   security_groups = ["${aws_security_group.nginx_web_interface.id}"]
   user_data = <<EOF
       #!/bin/bash
