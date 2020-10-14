@@ -121,13 +121,7 @@ resource "aws_lb_listener_rule" "asg" {
     field = "path-pattern"
     values = ["*"]
   }
-  action {
-    type = "redirect"
-    redirect {
-      port        = "443"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-    }
+
   }
 }
 
