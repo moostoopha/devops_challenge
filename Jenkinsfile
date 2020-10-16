@@ -30,7 +30,7 @@ pipeline {
       		agent any
       	steps {
         	script {
-        	    ssh  -i ubuntu@${IP-Address} << EOF
+        	    ssh  -i ${path_to_key} ubuntu@${IP_Address} << EOF
     			docker pull nginx/${BUILD_NUMBER}
 			docker stop my-nginx-container
 			docker rm my-nginx-container
